@@ -1,0 +1,44 @@
+public class Solution {
+    public int solve(ArrayList<Integer> A) {
+        // int min = Collections.min(A);  # BF
+        // int max = Collections.max(A);
+        // if(min == max) return 1;
+        // int n = A.size();
+        // int ans = Integer.MAX_VALUE;
+
+        // for(int i=0; i<n; i++){
+        //     if(A.get(i) == min){
+        //         for(int j=i+1; j<n; j++){
+        //             if(A.get(j) == max)  ans = Math.min(ans, j-i+1);
+        //         }
+        //     }
+        //     if(A.get(i) == max){
+        //         for(int j=i+1; j<n; j++){
+        //             if(A.get(j) == min) ans = Math.min(ans, j-i+1);
+        //         }
+        //     }
+        // }
+        // return ans;
+
+        int max = Collections.max(A);
+        int min = Collections.min(A);
+        int ans = Integer.MAX_VALUE;
+        int latest_min = -1;
+        int latest_max = -1;
+        int n = A.size();
+
+        for(int i=0; i<n; i++){
+            if(A.get(i) == min){
+                latest_min = i;
+                if(latest_max != -1) ans = Math.min(ans, Math.abs(latest_min-latest_max)+1);
+            }
+            if(A.get(i) == max){
+                latest_max = i;
+                if(latest_min != -1) ans = Math.min(ans, Math.abs(latest_min-latest_max)+1);
+            }
+        }
+
+        return ans;
+
+    }
+}
