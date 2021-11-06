@@ -1,0 +1,29 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> solve(int A) {
+
+        ArrayList<ArrayList<Integer>> alist = new ArrayList<ArrayList<Integer>>();
+
+        for(int i=0; i<A; i++){
+            int num = 1;
+            int count = 0;
+            ArrayList<Integer> list = new ArrayList<>();
+            for(int j=A-1; j>=A-1-i; j--){
+               list.add(num++);
+               count++;
+            }
+            for(int k=0; k<A-count; k++) list.add(0);
+            Collections.reverse(list);
+            alist.add(list);
+        }
+        return alist;
+        
+       // int ans[][] = new int[A][A];
+        
+
+        // for(int i=0; i<A; i++){
+        //     int num = 1;
+        //     for(int j=A-1; j>=A-1-i; j--) ans[i][j] = num++;
+        // }
+        // return ans;
+    }
+}
